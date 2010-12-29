@@ -1,0 +1,7 @@
+URxvt*font:             xft:Monospace:pixelsize=14
+URxvt*foreground:       #ffffff
+URxvt*background:       #000000
+URxvt*cursorColor:      #00ff00
+
+URxvt*scrollBar:        False
+
