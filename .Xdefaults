@@ -1,7 +1,16 @@
-URxvt*font:             xft:Monospace:pixelsize=14
+# URL selection
+Rxvt.perl-ext-common:  default,url-select
+Rxvt.keysym.M-u:       perl:url-select:select_next
+Rxvt.urlLauncher:      chromium
+Rxvt.underlineURLs:    True
+
+
+URxvt*font:             xft:DejaVu Sans Mono:pixelsize=13
 URxvt*foreground:       #ffffff
 URxvt*background:       #000000
-URxvt*cursorColor:      #00ff00
-
+#URxvt*cursorColor:      #00ff00
 URxvt*scrollBar:        False
 
+# Transparency
+#URxvt*depth:            32
+#URxvt*background:       rgba:0000/0000/0000/9999
