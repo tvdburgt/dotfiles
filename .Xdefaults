@@ -1,16 +1,27 @@
-# URL selection
+! url selection
 Rxvt.perl-ext-common:  default,url-select
 Rxvt.keysym.M-u:       perl:url-select:select_next
-Rxvt.urlLauncher:      chromium
-Rxvt.underlineURLs:    True
+Rxvt.urlLauncher:      firefox
+Rxvt.underlineURLs:    true
 
+URxvt*font:             xft:DejaVu Sans Mono:pixelsize=12
+!URxvt*font:             -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
+!URxvt*font:             xft:Droid Sans Mono:pixelsize=12
+!URxvt*font:             -*-terminus-*-*-normal-*-12-*-*-*-*-*-*-*
 
-URxvt*font:             xft:DejaVu Sans Mono:pixelsize=13
-URxvt*foreground:       #ffffff
-URxvt*background:       #000000
-#URxvt*cursorColor:      #00ff00
+! cursor
+Xcursor.theme: Vanilla-DMZ-AA
+Xcursor.size:  22
+
+! misc
+URxvt*urgentOnBell: true
 URxvt*scrollBar:        False
+URxvt*saveLines:        65535
+urxvt*termName: rxvt-256color
 
-# Transparency
-#URxvt*depth:            32
-#URxvt*background:       rgba:0000/0000/0000/9999
+! colors
+URxvt.foreground: #D7D0C7
+URxvt.background: #151515
+
+! color scheme
+#include "/home/tman/.xcolors/tangoesque"
