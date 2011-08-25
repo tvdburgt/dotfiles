@@ -3,24 +3,20 @@
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
+#
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice
+#xrandr --output DVI-0 --auto --output DVI-1 --auto --left-of DVI-0
 
-# Use "normal" cursor
+# Use a "normal" cursor
 xsetroot -cursor_name left_ptr
 
-# Set wallpaper with feh
-sh ~/.fehbg &
+# Set wallpaper
+eval $(cat ~/.fehbg) &
 
-#xcompmgr -c &
+# Activate numlock
+numlockx &
 
-#wicd-client &
-#gnome-power-manager &
-#gnome-settings-daemon &
+xmodmap ~/.Xmodmap &
 
-dzen2 -bg '#1a1a1a' -fg '#777777' -h 16 -w 550 -sa c -e '' -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -ta &
-
-exec ck-launch-session xmonad
+# Start Xmonad
+exec xmonad
