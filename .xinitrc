@@ -3,20 +3,31 @@
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
-#
 
-#xrandr --output DVI-0 --auto --output DVI-1 --auto --left-of DVI-0
+# key mappings
+xmodmap ~/.xmodmaprc &
 
-# Use a "normal" cursor
-xsetroot -cursor_name left_ptr
+# key bindings
+xbindkeys &
 
-# Set wallpaper
+# hide cursor when idle
+# unclutter &
+
+# background image
 eval $(cat ~/.fehbg) &
 
-# Activate numlock
+# activate numlock
 numlockx &
 
-xmodmap ~/.Xmodmap &
+# statusbar
+while true; do
+    xsetroot -name "$(statusline)"
+    sleep 1
+done &
 
-# Start Xmonad
-exec xmonad
+xrandr --output LVDS --auto --output VGA-0 --auto --pos 1368x0
+
+# start window manager
+while true; do
+    dwm
+done

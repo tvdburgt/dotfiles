@@ -2,26 +2,59 @@
 Rxvt.perl-ext-common:  default,url-select
 Rxvt.keysym.M-u:       perl:url-select:select_next
 Rxvt.urlLauncher:      firefox
-Rxvt.underlineURLs:    true
+Rxvt.underlineURLs:    True
 
 URxvt*font:             xft:DejaVu Sans Mono:pixelsize=12
+!URxvt*boldFont:         xft:DejaVu Sans Mono:pixelsize=12
 !URxvt*font:             -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
 !URxvt*font:             xft:Droid Sans Mono:pixelsize=12
 !URxvt*font:             -*-terminus-*-*-normal-*-12-*-*-*-*-*-*-*
 
 ! cursor
-Xcursor.theme: Vanilla-DMZ-AA
-Xcursor.size:  22
+!Xcursor.theme: Vanilla-DMZ-AA
 
 ! misc
-URxvt*urgentOnBell: true
+URxvt*urgentOnBell:     True
 URxvt*scrollBar:        False
 URxvt*saveLines:        65535
-urxvt*termName: rxvt-256color
+urxvt*termName:         rxvt-256color
+
+! scrolling
+URxvt*scrollTtyOutput:        False
+URxvt*scrollWithBuffer:       True
+URxvt*scrollTtyKeypress:      True
+URxvt.keysym.Shift-Up:	      command:\033]720;1\007
+URxvt.keysym.Shift-Down:      command:\033]721;1\007
 
 ! colors
 URxvt.foreground: #D7D0C7
-URxvt.background: #151515
+URxvt.background: #080808
+
 
 ! color scheme
-#include "/home/tman/.xcolors/tangoesque"
+*background: #111111
+*foreground: #babdb6
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMangenta + Mangenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff

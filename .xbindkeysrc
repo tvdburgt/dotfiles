@@ -1,39 +1,49 @@
-# Start music client
-"urxvt -e ncmpcpp"
-    m:0x0 + c:179
-    XF86Tools
+# applications
 
-# Toggle music
-"mpc toggle"
-    m:0x10 + c:172
+"slock"
+    Shift+Mod4 + l
+
+"urxvt -e ranger"
+    Mod4 + e
+
+"sudo reboot"
+    Shift+Mod4 + r
+    
+"firefox"
+    Shift+Mod4 + b
+
+"scrot -e 'mv $f ~/images/shots'"
+    Print
+
+"cap"
+    Mod4 + Print
+
+"urxvt -e vim"
+    Mod4 + v
+
+
+# music/sound
+
+"(cmus-remote -u)"
     XF86AudioPlay
 
-# Next song
-"mpc next"
-    m:0x4 + c:86
-    Control + KP_Add
+"(cmus-remote -n)"
+    XF86AudioNext
 
-# Previous song
-"mpc prev"
-    m:0x4 + c:82
-    Control + KP_Subtract
+"(cmus-remote -r)"
+    XF86AudioPrev
 
-# Toggle mute
-"amixer set Master toggle"
-    m:0x10 + c:121
-    XF86AudioMute
+"(cmus-remote -s)"
+    XF86AudioStop
 
-# Increase volume
-"amixer set Master playback 1+"
-    m:0x0 + c:123
-    XF86AudioRaiseVolume
-
-# Decrease volume
-"amixer set Master playback 1-"
-    m:0x0 + c:122
+"amixer set Master 1-"
     XF86AudioLowerVolume
 
-# Open browser
-"$BROWSER"
-    m:0x0 + c:180
-    XF86HomePage
+"amixer set Master 1+"
+    XF86AudioRaiseVolume
+
+"mpc next"
+    Control + period
+
+"mpc prev"
+    Control + comma
