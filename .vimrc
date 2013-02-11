@@ -46,13 +46,17 @@ set laststatus=2                " always show statusline
 set ttimeoutlen=100
 
 
+" mappings
 " yank-till-eol alias
 nnoremap Y y$
 noremap <F2> :NERDTreeToggle<CR>
-
-" Leader mappings
 nnoremap <leader>f :Ack 
 nnoremap <leader>a :A<CR>
+
+
+
+
+" crop current window
 nnoremap <leader>c :only<CR> 
 nnoremap <Leader>v :e $MYVIMRC<CR>
 nnoremap <Leader>s <C-w>v<C-w>l
@@ -64,7 +68,7 @@ nnoremap j gj
 nnoremap k gk
 
 
-" Window navigation
+" window navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -80,11 +84,17 @@ set gdefault                    " use global flag by default
 " commands
 autocmd! BufWritePost .vimrc source %       " automatically source this file
 
+
+" disable arrow keys
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
 " nerd tree
 let NERDTreeShowBookmarks       = 1 " show bookmarks by default
 let NERDTreeMinimalUI           = 1 " remove some clutter
 "let NERDTreeQuitOnOpen          = 1 " quit tree after opening a file
 let NERDTreeChDirMode           = 2 " automatically cd to tree root
 
-" Use C++11 compiler for syntax checking
 let g:syntastic_cpp_compiler_options = '-std=c++11'
