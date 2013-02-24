@@ -1,12 +1,18 @@
 " initialize pathogen
-"runtime bundle/pathogen/autoload/pathogen.vim
-"call pathogen#infect()
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
+" filetype off
+" set rtp+=~/.vim/bundle/vundle/
+" call vundle#rc()
+" Bundle 'gmarik/vundle'
+" Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'mileszs/ack.vim'
+" Bundle 'tpope/vim-commentary'
+" Bundle 'kien/ctrlp.vim'
+" Bundle 'a.vim'
 
 syntax on
 filetype plugin indent on
