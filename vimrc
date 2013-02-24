@@ -1,6 +1,12 @@
 " initialize pathogen
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"runtime bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
 
 syntax on
 filetype plugin indent on
