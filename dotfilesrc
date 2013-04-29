@@ -4,6 +4,4 @@ repository = ~/.dotfiles
 ignore = [
 	'.*', # temporary
 	'.git',
-	'.gitignore',
-	'aa',
-	'a']
+	'.gitignore']

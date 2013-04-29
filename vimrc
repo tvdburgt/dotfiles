@@ -2,17 +2,10 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-" filetype off
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-" Bundle 'gmarik/vundle'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'mileszs/ack.vim'
-" Bundle 'tpope/vim-commentary'
-" Bundle 'kien/ctrlp.vim'
-" Bundle 'a.vim'
+" include Go goodness
+if isdirectory($GOROOT)
+	set rtp+=$GOROOT/misc/vim
+endif
 
 syntax on
 filetype plugin indent on
@@ -26,12 +19,19 @@ set wildmenu
 
 " ninja sudo power
 " cmap w!! %!sudo tee > /dev/null %
+" write with root permissions
+cmap w!! w !sudo tee >/dev/null %
 
 " indentation (4 spaces)
 " set autoindent
 " set expandtab
 " set shiftwidth=4                " number of spaces for each indentation step
 " set softtabstop=4               " number of spaces for a tab char
+
+
+" keep swap and backup files centralized, if possible
+set backupdir=~/.tmp,.
+set directory=~/.tmp,.
 
 " c-style indentation
 set tabstop=8
@@ -66,8 +66,6 @@ nnoremap <leader>f :Ack
 nnoremap <leader>a :A<CR>
 
 
-
-
 " crop current window
 nnoremap <leader>c :only<CR> 
 nnoremap <Leader>v :e $MYVIMRC<CR>
@@ -92,16 +90,8 @@ set ignorecase                  " disable case sensitivity by default
 set smartcase                   " enable case sensitive search for patterns with uppercase chars
 set gdefault                    " use global flag by default
 
-
 " commands
 autocmd! BufWritePost .vimrc source %       " automatically source this file
-
-
-" disable arrow keys
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
 
 " nerd tree
 let NERDTreeShowBookmarks       = 1 " show bookmarks by default
@@ -110,3 +100,10 @@ let NERDTreeMinimalUI           = 1 " remove some clutter
 let NERDTreeChDirMode           = 2 " automatically cd to tree root
 
 let g:syntastic_cpp_compiler_options = '-std=c++11'
+
+" split windows to the right and bottom
+set splitbelow
+set splitright
+
+" show (partial) Vim command
+set showcmd
