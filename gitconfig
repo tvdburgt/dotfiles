@@ -5,5 +5,7 @@
 	st = status -sb
 	ci = commit
 	co = checkout
+	rpull = pull ––rebase
+	lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [color]
 	ui = true

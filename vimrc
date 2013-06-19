@@ -17,8 +17,6 @@ set title
 set scrolloff=5
 set wildmenu
 
-" ninja sudo power
-" cmap w!! %!sudo tee > /dev/null %
 " write with root permissions
 cmap w!! w !sudo tee >/dev/null %
 
