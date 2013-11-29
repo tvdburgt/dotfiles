@@ -4,14 +4,14 @@
 #
 # Executed by startx (run your window manager from here)
 
-# key mappings
+# key remappings
 xmodmap ~/.xmodmaprc &
 
 # key bindings
-xbindkeys &
+#xbindkeys &
 
 # hide cursor when idle
-# unclutter &
+unclutter &
 
 # background image
 eval $(cat ~/.fehbg) &
@@ -21,13 +21,9 @@ numlockx &
 
 # statusbar
 while true; do
-    xsetroot -name "$(statusline)"
+    xsetroot -name "`date` `uptime | sed 's/.*,//'`"
     sleep 1
 done &
 
-xrandr --output LVDS --auto --output VGA-0 --auto --pos 1368x0
-
 # start window manager
-while true; do
-    dwm
-done
+exec dwm
