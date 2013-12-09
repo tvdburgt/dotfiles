@@ -17,15 +17,12 @@ set title
 set scrolloff=5
 set wildmenu
 
+
+" disable a.vim
+let g:loaded_alternateFile = 1
+
 " write with root permissions
 cmap w!! w !sudo tee >/dev/null %
-
-" indentation (4 spaces)
-" set autoindent
-" set expandtab
-" set shiftwidth=4                " number of spaces for each indentation step
-" set softtabstop=4               " number of spaces for a tab char
-
 
 " keep swap and backup files centralized, if possible
 set backupdir=~/.tmp,.
@@ -39,7 +36,7 @@ set noexpandtab
 
 set textwidth=80
 
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType html set shiftwidth=2 softtabstop=2
 autocmd FileType c map <F9> :!gcc -o "%:p:r.out" "%:p" && "%:p:r.out"<CR>
 nmap <F5> :w<CR>:make %:r && ./%:r<CR>
 nmap <F6> :w<CR>:make %:r<CR>
@@ -50,11 +47,11 @@ command! W w
 " visual
 " colorscheme hybrid
 colorscheme jellybeans
+" colorscheme seoul256
 set laststatus=2                " always show statusline
 
-" key code sequence delay
-set ttimeoutlen=100
-
+" mapping and key code delay (timeout)
+set timeoutlen=1000 ttimeoutlen=0
 
 " mappings
 " yank-till-eol alias
@@ -88,8 +85,9 @@ set ignorecase                  " disable case sensitivity by default
 set smartcase                   " enable case sensitive search for patterns with uppercase chars
 set gdefault                    " use global flag by default
 
-" commands
-autocmd! BufWritePost .vimrc source %       " automatically source this file
+" file-specific commands
+autocmd! BufWritePost .vimrc nested source %       " automatically source this file
+autocmd FileType go set commentstring=//\ %s
 
 " nerd tree
 let NERDTreeShowBookmarks       = 1 " show bookmarks by default
@@ -105,3 +103,9 @@ set splitright
 
 " show (partial) Vim command
 set showcmd
+
+" use shared system clipboard
+set clipboard=unnamed
+
+" let syntastic use location list for errors
+let g:syntastic_always_populate_loc_list = 1

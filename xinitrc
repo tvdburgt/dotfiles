@@ -8,10 +8,10 @@
 xmodmap ~/.xmodmaprc &
 
 # key bindings
-#xbindkeys &
+xbindkeys &
 
 # hide cursor when idle
-unclutter &
+# unclutter -noevents &
 
 # background image
 eval $(cat ~/.fehbg) &
