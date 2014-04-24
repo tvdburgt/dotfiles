@@ -7,48 +7,43 @@ if isdirectory($GOROOT)
 	set rtp+=$GOROOT/misc/vim
 endif
 
+" Essentials {{{
 syntax on
 filetype plugin indent on
-let mapleader = ','
-set number
+" }}}
+" let mapleader = ","
+" let mapleader = "\<Space>"
 set hidden
-set cursorline
-set title
-set scrolloff=5
 set wildmenu
+set wildmode=longest:full,full
+set foldmethod=marker
+set textwidth=80
 
+command! W w
+command! WW w !sudo tee % > /dev/null
 
-" disable a.vim
-let g:loaded_alternateFile = 1
-
-" write with root permissions
-cmap w!! w !sudo tee >/dev/null %
+" nnoremap <silent> <Esc> :nohlsearch<CR>
+nnoremap <Leader>h :nohlsearch<CR>
 
 " keep swap and backup files centralized, if possible
 set backupdir=~/.tmp,.
 set directory=~/.tmp,.
 
-" c-style indentation
+" Indentation {{{
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
 set noexpandtab 
+" }}}
 
-set textwidth=80
-
-autocmd FileType html set shiftwidth=2 softtabstop=2
-autocmd FileType c map <F9> :!gcc -o "%:p:r.out" "%:p" && "%:p:r.out"<CR>
-nmap <F5> :w<CR>:make %:r && ./%:r<CR>
-nmap <F6> :w<CR>:make %:r<CR>
-
-" :w alias
-command! W w
-
-" visual
-" colorscheme hybrid
-colorscheme jellybeans
-" colorscheme seoul256
-set laststatus=2                " always show statusline
+" Visual {{{
+colorscheme hybrid
+set laststatus=2
+" set number
+set relativenumber
+set cursorline
+set title
+" }}}
 
 " mapping and key code delay (timeout)
 set timeoutlen=1000 ttimeoutlen=0
@@ -56,56 +51,72 @@ set timeoutlen=1000 ttimeoutlen=0
 " mappings
 " yank-till-eol alias
 nnoremap Y y$
-noremap <F2> :NERDTreeToggle<CR>
-nnoremap <leader>f :Ack 
-nnoremap <leader>a :A<CR>
-
-
-" crop current window
-nnoremap <leader>c :only<CR> 
-nnoremap <Leader>v :e $MYVIMRC<CR>
-nnoremap <Leader>s <C-w>v<C-w>l
-nnoremap <Leader>p :set paste!<CR>
-
+nnoremap <F2> :NERDTreeToggle<CR>
 
 " up/down in wrapped lines
 nnoremap j gj
 nnoremap k gk
 
+" Leader mappings {{{
+nnoremap <Leader>a :Ack 
+nnoremap <Leader>c :only<CR>
+nnoremap <Leader>v :e $MYVIMRC<CR>
+nnoremap <Leader>s :vsplit<CR>
+nnoremap <Leader>p :set paste!<CR>
+nnoremap <Leader>e :ll<CR>
+nnoremap <Leader>ft :set ft=
+" }}}
 
-" window navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-q> <C-w>c
-
-" searching
-set ignorecase                  " disable case sensitivity by default
-set smartcase                   " enable case sensitive search for patterns with uppercase chars
-set gdefault                    " use global flag by default
-
-" file-specific commands
-autocmd! BufWritePost .vimrc nested source %       " automatically source this file
-autocmd FileType go set commentstring=//\ %s
-
-" nerd tree
-let NERDTreeShowBookmarks       = 1 " show bookmarks by default
-let NERDTreeMinimalUI           = 1 " remove some clutter
-"let NERDTreeQuitOnOpen          = 1 " quit tree after opening a file
-let NERDTreeChDirMode           = 2 " automatically cd to tree root
-
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-
-" split windows to the right and bottom
+" Window {{{
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-q> <C-w>c
+" nnoremap <C-=> <C-w>=
+nnoremap + 10<C-w>>
+nnoremap - 10<C-w><
 set splitbelow
 set splitright
+" }}}
+
+" Search {{{
+set ignorecase
+set smartcase
+set incsearch
+" set hlsearch
+" }}}
+
+
+" invert global substitute flag 
+set gdefault
+
+" file-specific commands
+au! BufWritePost $MYVIMRC nested source $MYVIMRC
+au FileType go setlocal commentstring=//\ %s
+au FileType go nnoremap <Leader>i :Import 
+au FileType go nnoremap <Leader>f :Fmt<CR> 
+au FileType go nnoremap <F5> :!go install<CR>
+au FileType c nnoremap <F5> :make %:r && ./%:r<CR>
+au FileType c nnoremap <F6> :make %:r<CR>
+au FileType markdown setlocal spell
+
+nnoremap Q <Nop>
+
 
 " show (partial) Vim command
 set showcmd
 
-" use shared system clipboard
-set clipboard=unnamed
+" share default clipboard with X
+set clipboard=unnamed,unnamedplus
 
-" let syntastic use location list for errors
+" Plugin settings {{{
+let NERDTreeShowBookmarks = 1
+let NERDTreeMinimalUI = 1
+" let NERDTreeQuitOnOpen = 1
+let NERDTreeChDirMode = 2
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_cpp_compiler_options = "-std=c++11"
+let g:ctrlp_working_path_mode = 0
+let g:Powerline_symbols = "unicode"
+" }}}
