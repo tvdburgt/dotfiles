@@ -97,9 +97,11 @@ au FileType go setlocal commentstring=//\ %s
 au FileType go nnoremap <Leader>i :Import 
 au FileType go nnoremap <Leader>f :Fmt<CR> 
 au FileType go nnoremap <F5> :!go install<CR>
+au FileType tex nnoremap <F5> :!pdflatex %<CR>
 au FileType c nnoremap <F5> :make %:r && ./%:r<CR>
 au FileType c nnoremap <F6> :make %:r<CR>
 au FileType markdown setlocal spell
+au FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 nnoremap Q <Nop>
 

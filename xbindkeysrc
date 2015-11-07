@@ -42,8 +42,10 @@
 "amixer set Master 1+"
     XF86AudioRaiseVolume
 
-"mpc next"
+# "mpc next"
+"(cmus-remote -n)"
     Control + period
 
-"mpc prev"
+# "mpc prev"
+"(cmus-remote -r)"
     Control + comma
